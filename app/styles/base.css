@@ -1,0 +1,74 @@
+/* Tokens, palettes and element defaults. Everything else on the site is Tailwind utilities. */
+@layer base {
+/* Blue hour at 10,830 ft: the page is drenched in the deep blue of the lodge photos after sunset, lit by one warm lantern accent.
+   Layout: full-bleed pinned hero, horizontal climb, asymmetric room bento, split package, booking sentence, masonry wall.
+   Shape rule: buttons are pills, media and panels 14px, inputs 10px. Single dark theme by choice: blue hour is the brand. */
+:root{
+  --bg:oklch(0.19 0.042 228);
+  --bg-2:oklch(0.235 0.046 226);
+  --bg-3:oklch(0.3 0.05 224);
+  --fg:oklch(0.965 0.006 220);
+  --fg-2:oklch(0.8 0.024 222);
+  --line:oklch(0.965 0.006 220 / 0.14);
+  --accent:oklch(0.83 0.135 76);
+  --accent-deep:oklch(0.74 0.14 70);
+  --on-accent:oklch(0.23 0.045 62);
+  --danger:oklch(0.78 0.12 32);
+  --shade:oklch(0.19 0.042 228);
+  --placeholder:oklch(0.72 0.024 222);
+  --on-photo:oklch(0.97 0.005 220);
+  --f-display:var(--font-shoulders),'Arial Narrow','Roboto Condensed',sans-serif;
+  --f-body:var(--font-onest),ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r-media:14px;
+  --r-input:10px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ok:oklch(0.55 0.12 155);
+  --gutter:clamp(16px,4vw,48px);
+  --z-nav:30;
+  color-scheme:dark;
+}
+
+/* Colour studies. Every palette redefines the same tokens; photos keep a dark shade so text on them stays readable. */
+:root[data-palette="deodar"]{
+  --bg:oklch(0.2 0.03 165);--bg-2:oklch(0.245 0.034 163);--bg-3:oklch(0.31 0.038 160);
+  --fg:oklch(0.96 0.01 150);--fg-2:oklch(0.8 0.02 155);--line:oklch(0.96 0.01 150 / 0.14);
+  --accent:oklch(0.77 0.15 58);--accent-deep:oklch(0.7 0.16 52);--on-accent:oklch(0.2 0.04 50);
+  --danger:oklch(0.8 0.11 25);--shade:oklch(0.17 0.03 165);--placeholder:oklch(0.72 0.02 155);color-scheme:dark}
+:root[data-palette="roof"]{
+  --bg:oklch(0.17 0.006 40);--bg-2:oklch(0.215 0.007 40);--bg-3:oklch(0.28 0.009 40);
+  --fg:oklch(0.96 0.004 60);--fg-2:oklch(0.79 0.008 50);--line:oklch(0.96 0.004 60 / 0.14);
+  --accent:oklch(0.57 0.19 29);--accent-deep:oklch(0.51 0.18 28);--on-accent:oklch(0.99 0 0);
+  --danger:oklch(0.8 0.1 60);--shade:oklch(0.15 0.006 40);--placeholder:oklch(0.7 0.008 50);color-scheme:dark}
+:root[data-palette="glacier"]{
+  --bg:oklch(1 0 0);--bg-2:oklch(0.955 0.008 240);--bg-3:oklch(0.91 0.016 240);
+  --fg:oklch(0.21 0.03 250);--fg-2:oklch(0.45 0.03 250);--line:oklch(0.21 0.03 250 / 0.13);
+  --accent:oklch(0.5 0.14 245);--accent-deep:oklch(0.44 0.14 245);--on-accent:oklch(1 0 0);
+  --danger:oklch(0.52 0.17 28);--shade:oklch(0.2 0.035 245);--placeholder:oklch(0.55 0.02 250);color-scheme:light}
+:root[data-palette="alpenglow"]{
+  --bg:oklch(0.975 0.012 18);--bg-2:oklch(0.945 0.02 18);--bg-3:oklch(0.9 0.028 18);
+  --fg:oklch(0.23 0.035 275);--fg-2:oklch(0.47 0.03 275);--line:oklch(0.23 0.035 275 / 0.13);
+  --accent:oklch(0.56 0.16 15);--accent-deep:oklch(0.5 0.16 15);--on-accent:oklch(1 0 0);
+  --danger:oklch(0.5 0.17 40);--shade:oklch(0.22 0.035 275);--placeholder:oklch(0.56 0.02 275);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+[hidden]:not([hidden=until-found i]){display:none!important}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);transition:background-color .5s,color .5s;font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+p{margin:0;text-wrap:pretty}
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;line-height:.95;text-wrap:balance}
+/* Leaves room for the fixed nav. Lenis and native scrollIntoView both read this. */
+section[id]{scroll-margin-top:64px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* Tailwind preflight removes these browser defaults; the existing components still expect them. */
+a{text-decoration:underline}
+ul,ol{list-style:revert}
+svg{display:revert}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+}

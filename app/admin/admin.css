@@ -1,0 +1,36 @@
+/* Admin token scope. Styling lives in Tailwind utilities on the markup; this file only redefines the theme variables
+   (bg-bg, text-fg-2, bg-accent... resolve them) so the admin follows the phone's light/dark setting instead of the website palette.
+   The two keyframes back the arbitrary animate-[admin-spin...] and animate-[admin-pulse...] utilities. */
+@layer components {
+.admin{
+  --bg:oklch(0.975 0.006 235);
+  --bg-2:oklch(1 0 0);
+  --bg-3:oklch(0.94 0.01 235);
+  --fg:oklch(0.24 0.03 240);
+  --fg-2:oklch(0.46 0.022 240);
+  --line:oklch(0.24 0.03 240 / 0.12);
+  --accent:oklch(0.8 0.14 75);
+  --accent-deep:oklch(0.74 0.145 70);
+  --on-accent:oklch(0.24 0.045 62);
+  --danger:oklch(0.52 0.18 27);
+  --ok:oklch(0.48 0.11 155);
+  --placeholder:oklch(0.55 0.02 240);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  .admin{
+    --bg:oklch(0.17 0.025 235);
+    --bg-2:oklch(0.215 0.03 235);
+    --bg-3:oklch(0.27 0.032 235);
+    --fg:oklch(0.95 0.008 230);
+    --fg-2:oklch(0.76 0.02 232);
+    --line:oklch(0.95 0.008 230 / 0.12);
+    --danger:oklch(0.75 0.14 27);
+    --ok:oklch(0.78 0.13 155);
+    --placeholder:oklch(0.65 0.02 232);
+    color-scheme:dark;
+  }
+}
+@keyframes admin-spin{to{transform:rotate(360deg)}}
+@keyframes admin-pulse{to{opacity:.45}}
+}
